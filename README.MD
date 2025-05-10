@@ -1,3 +1,6 @@
+eval:
+https://github.com/tooling-automation/Future-skills
+
 how to run:
 #create network:
 docker network create --driver bridge --opt com.docker.network.bridge.enable_icc=true netginx
