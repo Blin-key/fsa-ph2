@@ -9,6 +9,10 @@ docker build ./nginx/ -t webbie/server && docker run --name webbie -d --network=
 #build and run the proxieserver:
 docker build ./xnign/ -t proxie/server && docker run --name proxie -d --network=netginx -p 80:80 -p 443:443 proxie/server 
 
+# Alternatively docker-compose can be used, note that the original servers might have to be renamed:
+cd ./compose ; docker-compose up -d
+
+
 
 resources used:
 - https://www.baeldung.com/linux/nginx-docker-container

@@ -1,0 +1,23 @@
+services:
+  web:
+    image: webbie/server
+    container_name: webbie
+    networks:
+      - netginx
+    expose:
+      - "8080"
+
+  proxy:
+    image: proxie/server
+    container_name: proxie
+    networks:
+      - netginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - web
+
+networks:
+  netginx:
+    driver: bridge
