@@ -18,4 +18,4 @@ resources used:
 - https://www.baeldung.com/linux/nginx-docker-container
 - https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/
 - https://medium.com/insiderengineering/docker-networking-enabling-communication-between-containers-09c1ac1cf2dc
-
+- https://www.freecodecamp.org/news/how-to-dockerize-a-flask-app/
