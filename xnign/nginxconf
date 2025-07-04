@@ -7,7 +7,7 @@ server {
     proxy_pass http://webbie:8080;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
-    limit_except GET POST {
+    limit_except GET {
       deny all;
     }
     add_header X-Frame-Options "DENY";
@@ -19,7 +19,7 @@ server {
     proxy_pass http://api:5000;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
-    limit_except GET POST {
+    limit_except GET {
       deny all;
     }
     add_header X-Frame-Options "DENY";
@@ -27,5 +27,4 @@ server {
     # Alle resources moeten vanuit dezelfde source komen.
     add_header Content-Security-Policy: "default-src 'self'";
   }
-
 }

@@ -7,6 +7,14 @@ services:
     expose:
       - "8080"
 
+  api:
+    image: api 
+    container_name: api
+    networks:
+      - netginx
+    expose:
+      - "${API_PORT}"
+
   proxy:
     image: proxie/server
     container_name: proxie
