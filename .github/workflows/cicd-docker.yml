@@ -26,11 +26,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y docker-compose
     - name: Build the api Docker image
-      run: docker build api --file api/Dockerfile
+      run: docker build api --file api/Dockerfile -t api
     - name: Build the webbie Docker image
-      run: docker build nginx --file nginx/Dockerfile
+      run: docker build nginx --file nginx/Dockerfile -t webbie/server
     - name: Build the proxie Docker image
-      run: docker build xnign --file xnign/Dockerfile
+      run: docker build xnign --file xnign/Dockerfile -t proxie/server
     - name: check docker-compose for errors
       run: docker-compose config --quiet
       working-directory: compose
