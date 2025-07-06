@@ -28,9 +28,9 @@ jobs:
     - name: Build the api Docker image
       run: docker build api --file api/Dockerfile
     - name: Build the webbie Docker image
-      run: docker build webbie --file nginx/Dockerfile
+      run: docker build nginx --file nginx/Dockerfile
     - name: Build the proxie Docker image
-      run: docker build proxie --file xnign/Dockerfile
+      run: docker build xnign --file xnign/Dockerfile
     - name: check docker-compose for errors
       run: docker-compose config --quiet
       working-directory: compose
