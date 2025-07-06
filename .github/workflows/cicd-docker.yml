@@ -5,15 +5,22 @@ on:
     branches: [ "main" ]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: lint api
+      uses: luke142367/Docker-Lint-Action@v1.0.0
+      with:
+        target: api/Dockerfile
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: Build the api Docker image
       run: docker build api --file api/Dockerfile
-
     - name: Build the webbie Docker image
       run: docker build nginx --file nginx/Dockerfile
-
     - name: Build the proxie Docker image
       run: docker build xnign --file xnign/Dockerfile
