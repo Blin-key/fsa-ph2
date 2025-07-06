@@ -28,9 +28,13 @@ jobs:
     - name: Build the api Docker image
       run: docker build api --file api/Dockerfile
     - name: Build the webbie Docker image
-      run: docker build nginx --file nginx/Dockerfile
+      run: docker build webbie --file nginx/Dockerfile
     - name: Build the proxie Docker image
-      run: docker build xnign --file xnign/Dockerfile
+      run: docker build proxie --file xnign/Dockerfile
     - name: check docker-compose for errors
       run: docker-compose config --quiet
       working-directory: compose
+    - name: test localhost
+      run: bash -c "[ 200 == `curl --write-out '%{http_code}' --silent --output /dev/null http://localhost` ]"
+    - name: test api-health
+      run: bash -c "[ 200 == `curl --write-out '%{http_code}' --silent --output /dev/null http://localhost/api/health` ]"
