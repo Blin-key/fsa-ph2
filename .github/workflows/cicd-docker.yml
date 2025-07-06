@@ -27,3 +27,6 @@ jobs:
       run: docker build nginx --file nginx/Dockerfile
     - name: Build the proxie Docker image
       run: docker build xnign --file xnign/Dockerfile
+    - name: check docker-compose for errors
+      run: docker-compose config --quiet
+      working-directory: compose
