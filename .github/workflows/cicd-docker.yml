@@ -34,6 +34,9 @@ jobs:
     - name: check docker-compose for errors
       run: docker-compose config --quiet
       working-directory: compose
+    - name: run containers
+      run: docker-compose up -d
+      working-directory: compose
     - name: test localhost
       run: bash -c "[ 200 == `curl --write-out '%{http_code}' --silent --output /dev/null http://localhost` ]"
     - name: test api-health
