@@ -28,13 +28,13 @@ jobs:
         sudo apt-get install -y docker-compose
     - name: Build the api Docker image
       #run: docker build api --file api/Dockerfile -t api
-      run: docker build -t localhost:5000/api:latest
+      run: docker build -t localhost:5000/api:latest api
     - name: Build the webbie Docker image
       #run: docker build nginx --file nginx/Dockerfile -t webbie/server
-      run: docker build -t localhost:5000/webbie/server:latest
+      run: docker build -t localhost:5000/webbie/server:latest nginx
     - name: Build the proxie Docker image
       #run: docker build xnign --file xnign/Dockerfile -t proxie/server
-      run: docker build -t localhost:5000/proxie/server:latest
+      run: docker build -t localhost:5000/proxie/server:latest xnign
     - name: check docker-compose for errors
       run: docker-compose config --quiet
       working-directory: compose
