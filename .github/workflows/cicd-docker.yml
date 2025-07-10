@@ -45,3 +45,15 @@ jobs:
       run: bash -c "[ 200 == `curl --write-out '%{http_code}' --silent --output /dev/null http://localhost` ]"
     - name: test api-health
       run: bash -c "[ 200 == `curl --write-out '%{http_code}' --silent --output /dev/null http://localhost/api/health` ]"
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
+    - uses: actions/checkout@v4
+    - name: stop containers and redeploy
+      run: |
+        docker-compose --file /home/casper/docker-ph2/compose/docker-compose.yml down
+        docker build -t localhost:5000/api:latest api
+        docker build -t localhost:5000/webbie/server:latest webbie/server
+        docker build -t localhost:5000/proxie/server:latest proxie/server
+        docker-compose --file /home/casper/docker-ph2/compose/docker-compose.yml up -d
