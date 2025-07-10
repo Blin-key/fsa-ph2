@@ -1,6 +1,6 @@
 services:
   web:
-    image: webbie/server
+    image: webbie/server:latest
     container_name: webbie
     networks:
       - netginx
@@ -8,7 +8,7 @@ services:
       - "8080"
 
   api:
-    image: api 
+    image: api:1.0.1
     container_name: api
     networks:
       - netginx

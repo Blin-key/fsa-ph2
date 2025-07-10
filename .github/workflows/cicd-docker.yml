@@ -18,7 +18,8 @@ jobs:
 #      env:
 #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   build:
-    runs-on: ubuntu-latest
+    #    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v4
     - name: install docker-compose
@@ -26,11 +27,14 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y docker-compose
     - name: Build the api Docker image
-      run: docker build api --file api/Dockerfile -t api
+      #run: docker build api --file api/Dockerfile -t api
+      run: docker build -t localhost:5000/api:latest
     - name: Build the webbie Docker image
-      run: docker build nginx --file nginx/Dockerfile -t webbie/server
+      #run: docker build nginx --file nginx/Dockerfile -t webbie/server
+      run: docker build -t localhost:5000/webbie/server:latest
     - name: Build the proxie Docker image
-      run: docker build xnign --file xnign/Dockerfile -t proxie/server
+      #run: docker build xnign --file xnign/Dockerfile -t proxie/server
+      run: docker build -t localhost:5000/proxie/server:latest
     - name: check docker-compose for errors
       run: docker-compose config --quiet
       working-directory: compose
