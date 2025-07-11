@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route('/api')
 def hello():
-    return '<h1>Hello from Flask api</h1>'
+    return '<h1>Hello from Flask api v.2</h1>'
 
 @app.route('/api/health')
 def healthcheck():
